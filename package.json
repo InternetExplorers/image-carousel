@@ -4,7 +4,6 @@
   "description": "> Create image carousel component of a yelp-like webpage. Serving API and relative components to a proxy server.",
   "main": "something.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
