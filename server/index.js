@@ -26,19 +26,13 @@ app.get('/businesses/:businessId/images', (req, res) => {
 
   db.query(queryString, (err, result) => {
     if (err) {
-      console.log(err);
+      res.send(err);
     } else {
       res.send(result);
     }
   });
 });
 
-
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
-
-
-module.exports = {
-  test: number => number + 2,
-};
