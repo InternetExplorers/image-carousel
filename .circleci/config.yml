@@ -35,7 +35,7 @@ jobs:
         
       # run tests!
       - run:
-        command: npm start
+        command: node ./server/index.js
         background: true
 
       - run: yarn test
