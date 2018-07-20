@@ -22,6 +22,7 @@ CREATE TABLE images (
   businessId int NOT NULL,
   title varchar(50),
   description varchar(500),
+  date DATE,
   originalUrl varchar(100) NOT NULL,
   thumbnailUrl varchar(100) NOT NULL,
   PRIMARY KEY (id)
@@ -128,3 +129,18 @@ INSERT into businesses (name) VALUES ("Paragon");
 INSERT into businesses (name) VALUES ("Jewel");
 INSERT into businesses (name) VALUES ("Aquas");
 
+INSERT into users (name, imageUrl) VALUES ("Amya Ryan", "https://s3.amazonaws.com/uifaces/faces/twitter/ruzinav/128.jpg");
+INSERT into users (name, imageUrl) VALUES ("Joanie Leannon", "https://s3.amazonaws.com/uifaces/faces/twitter/nacho/128.jpg");
+
+INSERT into images (ownerId, businessId, title, description, 
+originalUrl, thumbnailUrl, date) 
+VALUES (1,1,"food", "this is good", "https://therecipecritic.com/wp-content/uploads/2017/01/honeygarlicbuttershrimp2.jpg", "https://therecipecritic.com/wp-content/uploads/2017/01/honeygarlicbuttershrimp2.jpg", "2018-01-01");
+INSERT into images (ownerId, businessId, title, description, 
+originalUrl, thumbnailUrl, date) 
+VALUES (1,1,"food", "this is good", "https://therecipecritic.com/wp-content/uploads/2017/01/honeygarlicbuttershrimp2.jpg", "https://therecipecritic.com/wp-content/uploads/2017/01/honeygarlicbuttershrimp2.jpg", "2018-01-01");
+INSERT into images (ownerId, businessId, title, description, 
+originalUrl, thumbnailUrl, date) 
+VALUES (1,1,"food", "this is good", "https://therecipecritic.com/wp-content/uploads/2017/01/honeygarlicbuttershrimp2.jpg", "https://therecipecritic.com/wp-content/uploads/2017/01/honeygarlicbuttershrimp2.jpg", "2018-01-01");
+INSERT into images (ownerId, businessId, title, description, 
+originalUrl, thumbnailUrl, date) 
+VALUES (1,1,"food", "this is good", "https://therecipecritic.com/wp-content/uploads/2017/01/honeygarlicbuttershrimp2.jpg", "https://therecipecritic.com/wp-content/uploads/2017/01/honeygarlicbuttershrimp2.jpg", "2018-01-01");
