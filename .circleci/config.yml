@@ -8,7 +8,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:8.11
-      - image: mysql:5.7.22
+      - image: circleci/mysql:5.7.22
           environment:
               MYSQL_USER: root
               MYSQL_ALLOW_EMPTY_PASSWORD: true
@@ -38,8 +38,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      - run:
-          command: mysql -u root < ./database/schema.sql
 
       - run:
           command: node ./server/index.js
