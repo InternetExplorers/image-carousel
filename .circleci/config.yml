@@ -9,9 +9,9 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:8.11
       - image: circleci/mysql:5.7.22
-          environment: 
-              MYSQL_ALLOW_EMPTY_PASSWORD: true
-              MYSQL_USER: root
+          environment:
+              - MYSQL_ALLOW_EMPTY_PASSWORD=true
+              - MYSQL_USER=root
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
