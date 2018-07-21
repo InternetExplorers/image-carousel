@@ -41,7 +41,7 @@ jobs:
         
       # run tests!
 
-      - run: mysql -u root < ./ database/schema.sql
+      - run: mysql -u root < ./database/schema.sql
 
       - run:
           command: node ./server/index.js
