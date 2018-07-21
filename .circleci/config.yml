@@ -8,7 +8,11 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:8.11
-      
+      - image: circleci/mysql:5.7.22
+          environment:
+              MYSQL_USER: root
+              MYSQL_ALLOW_EMPTY_PASSWORD: true
+
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -34,6 +38,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
+      - run:
+          command: mysql -u root < ./database/schema.sql
+
       - run:
           command: node ./server/index.js
           background: true
