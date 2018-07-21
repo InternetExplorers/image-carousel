@@ -40,7 +40,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-
+      - run: sudo service mysql restart 
       - run: mysql -u root < ./database/schema.sql
 
       - run:
