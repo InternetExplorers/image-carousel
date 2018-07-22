@@ -40,9 +40,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      - run: mysql.server start
-       
-      - run: mysql -u root < ./database/schema.sql
+      - run: mysql mysql -h 127.0.0.1 -u root < ./database/schema.sql
 
       - run:
           command: node ./server/index.js
