@@ -31,7 +31,7 @@ jobs:
           - v1-dependencies-
 
       - run: yarn install
-      # - run: sudo apt install -y mysql-client
+      - run: sudo apt install -y mysql-client
       # - run: sudo apt-get install mysql-server
 
       - save_cache:
