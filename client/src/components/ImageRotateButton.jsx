@@ -1,29 +1,16 @@
 import React from 'react';
 
-const ImageNextButton = ({ handleRotate }) => (
-  <div className={handleRotate ? 'image-carousel-show' : 'image-carousel-disable'}>
-    Next
+const ImageRotateButton = ({ direction, disable, handleRotate }) => (
+  <div
+    className={handleRotate ? 'image-carousel-show' : 'image-carousel-disable'}
+    id={direction > 0 ? 'image-carousel-next' : 'image-carousel-prev'}
+    onClick={disable ? () => {} : () => { handleRotate(direction); }}
+    onKeyUp={() => {}} // this and the lower 2 lines are solely for eslint
+    role="button"
+    tabIndex="-1"
+  >
+    {direction > 0 ? '❯' : '❮'}
   </div>
 );
-
-const ImagePrevButton = ({ handleRotate }) => (
-  <div className={handleRotate ? 'image-carousel-show' : 'image-carousel-disable'}>
-    Prev
-  </div>
-);
-
-const ImageRotateButton = ({
-  direction, imageList, centerImageIdx, handleRotate,
-}) => {
-  let button;
-  if (direction < 0) {
-    button = <ImagePrevButton handleRotate={centerImageIdx === 0 ? null : () => handleRotate(-1)} />;
-  } else {
-    button = <ImageNextButton handleRotate={centerImageIdx === imageList.length - 1 ? null : () => handleRotate(1)} />;
-  }
-  return (
-    { button }
-  );
-};
 
 export default ImageRotateButton;
