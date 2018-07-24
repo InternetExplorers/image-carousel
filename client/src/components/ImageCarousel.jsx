@@ -13,6 +13,10 @@ class ImageCarousel extends React.Component {
   }
 
   componentDidMount() {
+    this.fetchImages();
+  }
+
+  fetchImages() {
     $.ajax({
       url: 'http://localhost:3001/businesses/1/images',
       method: 'GET',

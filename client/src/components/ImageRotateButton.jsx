@@ -5,7 +5,7 @@ const ImageRotateButton = ({ direction, disable, handleRotate }) => (
     className={handleRotate ? 'image-carousel-show' : 'image-carousel-disable'}
     id={direction > 0 ? 'image-carousel-next' : 'image-carousel-prev'}
     onClick={disable ? () => {} : () => { handleRotate(direction); }}
-    onKeyUp={() => {}} // this and the lower 2 lines are solely for eslint
+    onKeyUp={() => {}}
     role="button"
     tabIndex="-1"
   >

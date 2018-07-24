@@ -5,7 +5,7 @@ const ImageListEntry = ({ image }) => {
   if (image) {
     imagePanel = (
       <div>
-        <img src={image.thumbnailUrl} alt={image.description} />
+        <img src={image.thumbnailUrl} alt={image.title} />
       </div>
     );
   } else {
