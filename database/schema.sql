@@ -134,13 +134,13 @@ INSERT into users (name, imageUrl) VALUES ("Joanie Leannon", "https://s3.amazona
 
 INSERT into images (ownerId, businessId, title, description, 
 originalUrl, thumbnailUrl, date) 
-VALUES (1,1,"food", "this is good", "https://therecipecritic.com/wp-content/uploads/2017/01/honeygarlicbuttershrimp2.jpg", "https://therecipecritic.com/wp-content/uploads/2017/01/honeygarlicbuttershrimp2.jpg", "2018-01-01");
+VALUES (1,1,"raw shrimp", "this is bad", "https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/shrimp2.jpg", "https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/thumbShrimp2.jpg", "2018-01-01");
 INSERT into images (ownerId, businessId, title, description, 
 originalUrl, thumbnailUrl, date) 
-VALUES (1,1,"food", "this is good", "https://therecipecritic.com/wp-content/uploads/2017/01/honeygarlicbuttershrimp2.jpg", "https://therecipecritic.com/wp-content/uploads/2017/01/honeygarlicbuttershrimp2.jpg", "2018-01-01");
+VALUES (1,1,"cook shrimp", "this is good", "https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/shrimp1.jpg", "https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/thumbShrimp1.jpg", "2018-01-22");
 INSERT into images (ownerId, businessId, title, description, 
 originalUrl, thumbnailUrl, date) 
-VALUES (1,1,"food", "this is good", "https://therecipecritic.com/wp-content/uploads/2017/01/honeygarlicbuttershrimp2.jpg", "https://therecipecritic.com/wp-content/uploads/2017/01/honeygarlicbuttershrimp2.jpg", "2018-01-01");
+VALUES (1,1,"raw shrimp", "this is bad", "https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/shrimp2.jpg", "https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/thumbShrimp2.jpg", "2018-01-23");
 INSERT into images (ownerId, businessId, title, description, 
 originalUrl, thumbnailUrl, date) 
-VALUES (1,1,"food", "this is good", "https://therecipecritic.com/wp-content/uploads/2017/01/honeygarlicbuttershrimp2.jpg", "https://therecipecritic.com/wp-content/uploads/2017/01/honeygarlicbuttershrimp2.jpg", "2018-01-01");
+VALUES (1,1,"cook shrimp", "this is good", "https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/shrimp1.jpg", "https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/thumbShrimp1.jpg", "2018-01-24");

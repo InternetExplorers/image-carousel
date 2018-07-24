@@ -1,5 +1,12 @@
-const server = require('../server/index');
+const request = require('request');
 
-test('adds 2 to 1 to equal 3', () => {
-  expect(server.test(1)).toBe(3);
+describe('Server database connection test', () => {
+  it('Allow get request on images API', (done) => {
+    request('http://localhost:3001/businesses/1/images', (error, response, body) => {
+      const image = JSON.parse(body);
+      expect(image[0].title).toEqual('raw shrimp');
+      expect(image[0].description).toEqual('this is bad');
+      done();
+    });
+  });
 });
