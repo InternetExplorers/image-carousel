@@ -22,6 +22,7 @@ app.get('/businesses/:businessId/images', (req, res) => {
     images.originalUrl,
     images.thumbnailUrl
     from businesses, images, users where businesses.id = ${businessId} AND
+    images.businessId =  ${businessId} AND
     users.id = images.ownerId;`;
 
   db.query(queryString, (err, result) => {
