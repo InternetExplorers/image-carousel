@@ -13,6 +13,7 @@ class ImageCarousel extends React.Component {
       centerImageIdx: 0,
       displayButton: false,
     };
+    this.handleRotateImage = this.handleRotateImage.bind(this);
   }
 
   componentDidMount() {
@@ -29,9 +30,9 @@ class ImageCarousel extends React.Component {
     });
   }
 
-  handleDisplayButton(show) {
+  handleDisplayButton(boolVisible) {
     this.setState({
-      displayButton: show,
+      displayButton: boolVisible,
     });
   }
 
@@ -78,7 +79,7 @@ class ImageCarousel extends React.Component {
             direction={-1}
             disable={disablePrevButton}
             displayButton={displayButton}
-            handleRotate={this.handleRotateImage.bind(this)}
+            handleRotate={this.handleRotateImage}
           />
           )}
         {!displayAddPhoto
@@ -86,7 +87,7 @@ class ImageCarousel extends React.Component {
             direction={1}
             disable={disableNextButton}
             displayButton={displayButton}
-            handleRotate={this.handleRotateImage.bind(this)}
+            handleRotate={this.handleRotateImage}
           />
           )}
       </div>
