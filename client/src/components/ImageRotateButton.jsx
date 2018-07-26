@@ -1,8 +1,15 @@
 import React from 'react';
 
-const ImageRotateButton = ({ direction, disable, handleRotate }) => (
-  <div
-    className={handleRotate ? 'image-carousel-show' : 'image-carousel-disable'}
+const ImageRotateButton = ({
+  direction,
+  disable,
+  handleRotate,
+  displayButton
+}) => (
+  <span
+    className={'image-carousel-button'
+    + (displayButton ? '' : ' image-carousel-button-hide')
+    + (handleRotate ? '' : ' image-carousel-button-disable')}
     id={direction > 0 ? 'image-carousel-next' : 'image-carousel-prev'}
     onClick={disable ? () => {} : () => { handleRotate(direction); }}
     onKeyUp={() => {}}
@@ -10,7 +17,7 @@ const ImageRotateButton = ({ direction, disable, handleRotate }) => (
     tabIndex="-1"
   >
     {direction > 0 ? '❯' : '❮'}
-  </div>
+  </span>
 );
 
 export default ImageRotateButton;
