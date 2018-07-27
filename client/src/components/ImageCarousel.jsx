@@ -4,6 +4,7 @@ import url from 'url';
 import ImageListEntry from './ImageListEntry.jsx';
 import ImageRotateButton from './ImageRotateButton.jsx';
 import AddImageButton from './AddImageButton.jsx';
+import ImageModal from './ImageModal.jsx';
 
 class ImageCarousel extends React.Component {
   constructor(props) {
@@ -11,23 +12,33 @@ class ImageCarousel extends React.Component {
     this.state = {
       imageList: [],
       centerImageIdx: 0,
+      selectImgIdx: 0,
       displayButton: false,
+      displayModal: false,
     };
     this.handleRotateImage = this.handleRotateImage.bind(this);
+    this.handleToggleModal = this.handleToggleModal.bind(this);
   }
 
   componentDidMount() {
-    this.fetchImages();
+    this.fetchImages(1);
   }
 
-  fetchImages() {
+  fetchImages(businessId) {
     $.ajax({
-      url: 'http://localhost:3001/businesses/1/images',
+      url: `http://localhost:3001/businesses/${businessId}/images`,
       method: 'GET',
       success: (imageList) => {
         this.setState({ imageList });
       },
     });
+  }
+
+  handleToggleModal(event) {
+    const imageIdx = Number(event.target.dataset.imgIdx);
+    this.setState(
+      prevState => ({ displayModal: !prevState.displayModal, selectImgIdx: imageIdx }),
+    );
   }
 
   handleDisplayButton(boolVisible) {
@@ -44,7 +55,9 @@ class ImageCarousel extends React.Component {
   }
 
   render() {
-    const { centerImageIdx, imageList, displayButton } = this.state;
+    const {
+      centerImageIdx, imageList, displayButton, selectImgIdx, displayModal,
+    } = this.state;
     let leftIdx;
     let rightIdx;
     let disablePrevButton = false;
@@ -70,7 +83,16 @@ class ImageCarousel extends React.Component {
       >
         <div className="image-carousel-row">
           {imageIdxArray.map(
-            imgIdx => <ImageListEntry key={imgIdx} image={imageList[imgIdx]} centerImageIdx={centerImageIdx} />,
+            (imgIdx) => {
+              return (
+                <ImageListEntry
+                  key={imgIdx}
+                  imgIdx={imgIdx}
+                  image={imageList[imgIdx]}
+                  centerImageIdx={centerImageIdx}
+                  handleToggleModal={this.handleToggleModal}
+                />);
+            },
           )}
           {displayAddPhoto ? <AddImageButton /> : null}
         </div>
@@ -88,6 +110,13 @@ class ImageCarousel extends React.Component {
             disable={disableNextButton}
             displayButton={displayButton}
             handleRotate={this.handleRotateImage}
+          />
+          )}
+        {displayModal
+          && (<ImageModal
+            imageList={imageList}
+            imageIdx={selectImgIdx}
+            onCloseRequest={this.handleToggleModal}
           />
           )}
       </div>
