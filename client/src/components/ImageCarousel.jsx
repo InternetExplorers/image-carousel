@@ -22,7 +22,7 @@ class ImageCarousel extends React.Component {
   componentDidMount() {
     fetchImages(1, (err, imageList) => {
       if (err) {
-        console.log(err);
+        throw (err);
       } else {
         this.setState({ imageList });
       }
