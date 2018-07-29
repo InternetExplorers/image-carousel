@@ -4,7 +4,7 @@
   "description": "> Create image carousel component of a yelp-like webpage. Serving API and relative components to a proxy server.",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "build": "webpack -d --watch",
     "start": "nodemon ./server/index.js",
     "database": "mysql -u root < database/schema.sql -p"
@@ -29,6 +29,7 @@
     "express": "^4.16.3",
     "jquery": "^3.3.1",
     "lodash": "^4.17.10",
+    "moment": "^2.22.2",
     "mysql": "^2.16.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
@@ -37,6 +38,11 @@
     "webpack-cli": "^3.1.0"
   },
   "devDependencies": {
-    "jest": "^23.4.1"
+    "babel-jest": "^23.4.2",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^23.4.1",
+    "jest-enzyme": "^6.0.2",
+    "sinon": "^6.1.4"
   }
 }

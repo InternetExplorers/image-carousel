@@ -6,18 +6,19 @@ const ImageRotateButton = ({
   handleRotate,
   displayButton
 }) => (
-  <div
+  <span
     className={'image-carousel-button'
     + (displayButton ? '' : ' image-carousel-button-hide')
-    + (handleRotate ? '' : ' image-carousel-button-disable')
+    + (disable ? ' image-carousel-button-disable' : ' image-carousel-button-enable')
     + (direction > 0 ? ' image-carousel-next' : ' image-carousel-prev')}
     onClick={disable ? () => {} : () => { handleRotate(direction); }}
     onKeyUp={() => {}}
     role="button"
     tabIndex="-1"
+    aria-hidden="true"
   >
     {direction > 0 ? '❯' : '❮'}
-  </div>
+  </span>
 );
 
 export default ImageRotateButton;

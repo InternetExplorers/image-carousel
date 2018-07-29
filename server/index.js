@@ -13,8 +13,10 @@ app.use(express.static(path.join(__dirname, '/../client/dist')));
 app.get('/businesses/:businessId/images', (req, res) => {
   const { businessId } = req.params;
   const queryString = `SELECT businesses.name,
-    users.name,
-    users.imageUrl,
+    users.profileName,
+    users.profileUrl,
+    users.profileReviewCount,
+    users.profileFriendCount,
     images.id,
     images.title,
     images.description,

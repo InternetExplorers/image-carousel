@@ -1,6 +1,5 @@
 import React from 'react';
 import $ from 'jquery';
-import url from 'url';
 import ImageListEntry from './ImageListEntry.jsx';
 import ImageRotateButton from './ImageRotateButton.jsx';
 import AddImageButton from './AddImageButton.jsx';
@@ -31,14 +30,22 @@ class ImageCarousel extends React.Component {
       success: (imageList) => {
         this.setState({ imageList });
       },
+      error: (err) => {
+        console.log(err);
+      },
     });
   }
 
   handleToggleModal(event) {
-    const imageIdx = Number(event.target.dataset.imgIdx);
     this.setState(
-      prevState => ({ displayModal: !prevState.displayModal, selectImgIdx: imageIdx }),
+      prevState => ({ displayModal: !prevState.displayModal }),
     );
+    if (event && event.target.dataset.imgIdx) {
+      const imageIdx = Number(event.target.dataset.imgIdx);
+      this.setState({
+        selectImgIdx: imageIdx,
+      });
+    }
   }
 
   handleDisplayButton(boolVisible) {
