@@ -11,8 +11,10 @@ CREATE TABLE businesses (
 
 CREATE TABLE users (
   id int NOT NULL AUTO_INCREMENT,
-  name varchar(50) NOT NULL,
-  imageUrl varchar(100),
+  profileName varchar(50) NOT NULL,
+  profileUrl varchar(100),
+  profileReviewCount int,
+  profileFriendCount int,
   PRIMARY KEY (id)
 );
 
@@ -129,9 +131,12 @@ INSERT into businesses (name) VALUES ("Paragon");
 INSERT into businesses (name) VALUES ("Jewel");
 INSERT into businesses (name) VALUES ("Aquas");
 
-INSERT into users (name, imageUrl) VALUES ("Amya Ryan", "https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/user1.jpg");
-INSERT into users (name, imageUrl) VALUES ("Joanie Leannon", "https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/user2.jpg");
-INSERT into users (name, imageUrl) VALUES ("John Doe", "https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/user3.jpg");
+INSERT into users (profileName, profileUrl, profileReviewCount, profileFriendCount) 
+VALUES ("Amya Ryan", "https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/user1.jpg", 42, 30);
+INSERT into users (profileName, profileUrl, profileReviewCount, profileFriendCount) 
+VALUES ("Joanie Leannon", "https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/user2.jpg", 55, 6);
+INSERT into users (profileName, profileUrl, profileReviewCount, profileFriendCount) 
+VALUES ("John Doe", "https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/user3.jpg", 1, 5);
 
 INSERT into images (ownerId, businessId, title, description, originalUrl, thumbnailUrl, date) 
 VALUES (1,1,"raw shrimp", "this is bad", "https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/shrimp2.jpg", "https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/thumbShrimp2.jpg", "2018-01-01");
