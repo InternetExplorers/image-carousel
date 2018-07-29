@@ -1,5 +1,5 @@
 import React from 'react';
-import $ from 'jquery';
+import { fetchImages } from '../requestHelper';
 import ImageListEntry from './ImageListEntry.jsx';
 import ImageRotateButton from './ImageRotateButton.jsx';
 import AddImageButton from './AddImageButton.jsx';
@@ -20,19 +20,12 @@ class ImageCarousel extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchImages(1);
-  }
-
-  fetchImages(businessId) {
-    $.ajax({
-      url: `http://localhost:3001/businesses/${businessId}/images`,
-      method: 'GET',
-      success: (imageList) => {
-        this.setState({ imageList });
-      },
-      error: (err) => {
+    fetchImages(1, (err, imageList) => {
+      if (err) {
         console.log(err);
-      },
+      } else {
+        this.setState({ imageList });
+      }
     });
   }
 
