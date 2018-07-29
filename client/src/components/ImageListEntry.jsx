@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from './styles/ImageListEntry.css';
 
 const ImageListEntry = ({ imgIdx, image, handleToggleModal}) => (
   <div
-    className="image-carousel-img image-carousel-col"
+    className={styles.imageCarouselImg}
     role="button"
     tabIndex="-1"
     onClick={handleToggleModal}

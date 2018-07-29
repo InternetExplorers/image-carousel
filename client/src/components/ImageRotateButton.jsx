@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './styles/ImageRotateButton.css';
 
 const ImageRotateButton = ({
   direction,
@@ -7,10 +8,10 @@ const ImageRotateButton = ({
   displayButton
 }) => (
   <span
-    className={'image-carousel-button'
-    + (displayButton ? '' : ' image-carousel-button-hide')
-    + (disable ? ' image-carousel-button-disable' : ' image-carousel-button-enable')
-    + (direction > 0 ? ' image-carousel-next' : ' image-carousel-prev')}
+    className={styles.imageCarouselButton
+    + (displayButton ? '' : ` ${styles.hide}`)
+    + (disable ? ` ${styles.disbale}` : ` ${styles.enable}`)
+    + (direction > 0 ? ` ${styles.next}` : ' image-carousel-prev')}
     onClick={disable ? () => {} : () => { handleRotate(direction); }}
     onKeyUp={() => {}}
     role="button"

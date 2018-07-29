@@ -4,6 +4,7 @@ import ImageListEntry from './ImageListEntry.jsx';
 import ImageRotateButton from './ImageRotateButton.jsx';
 import AddImageButton from './AddImageButton.jsx';
 import ImageModal from './ImageModal.jsx';
+import styles from './styles/ImageCarousel.css';
 
 class ImageCarousel extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class ImageCarousel extends React.Component {
   }
 
   componentDidMount() {
-    fetchImages(1, (err, imageList) => {
+    fetchImages(10, (err, imageList) => {
       if (err) {
         throw (err);
       } else {
@@ -71,17 +72,18 @@ class ImageCarousel extends React.Component {
       rightIdx = centerImageIdx + 1;
       if (rightIdx >= imageList.length - 1) disableNextButton = true;
     }
+    console.log(styles.imageCarouselBg)
     let imageIdxArray = [leftIdx, centerImageIdx, rightIdx];
     const displayAddPhoto = imageList.length < 3;
     imageIdxArray = imageIdxArray.filter(idx => imageList[idx] !== undefined);
     return (
       <div
-        className={"image-carousel"
-        + (displayAddPhoto ? ' image-carousel-bg' : '')}
+        className={styles.imageCarousel
+        + (displayAddPhoto ? ` ${styles.imageCarouselBg}` : '')}
         onMouseEnter={() => this.handleDisplayButton(true)}
         onMouseLeave={() => this.handleDisplayButton(false)}
       >
-        <div className="image-carousel-row">
+        <div className={styles.imageCarouselRow}>
           {imageIdxArray.map(
             (imgIdx) => {
               return (
