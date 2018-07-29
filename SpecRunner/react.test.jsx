@@ -80,9 +80,9 @@ describe('Test Image Carousel component', () => {
     const wrapper = mount(<ImageCarousel />);
     wrapper.setState({ imageList: fakeImages });
     wrapper.update();
-    wrapper.find('.image-carousel-next').simulate('click');
+    wrapper.find(ImageRotateButton).find('[direction=1]').simulate('click');
     expect(wrapper.state().centerImageIdx).toEqual(1);
-    wrapper.find('.image-carousel-prev').simulate('click');
+    wrapper.find(ImageRotateButton).find('[direction=-1]').simulate('click');
     expect(wrapper.state().centerImageIdx).toEqual(0);
   });
 
@@ -91,7 +91,7 @@ describe('Test Image Carousel component', () => {
     wrapper.setState({ imageList: fakeImages });
     wrapper.update();
     expect(wrapper.find(ImageModal).exists()).toEqual(false);
-    wrapper.find('.image-carousel-img').at(1).simulate('click');
+    wrapper.find(ImageListEntry).at(1).find('[role="button"]').simulate('click');
     expect(wrapper.find(ImageModal).exists()).toEqual(true);
   });
 });

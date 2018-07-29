@@ -72,7 +72,6 @@ class ImageCarousel extends React.Component {
       rightIdx = centerImageIdx + 1;
       if (rightIdx >= imageList.length - 1) disableNextButton = true;
     }
-    console.log(styles.imageCarouselBg)
     let imageIdxArray = [leftIdx, centerImageIdx, rightIdx];
     const displayAddPhoto = imageList.length < 3;
     imageIdxArray = imageIdxArray.filter(idx => imageList[idx] !== undefined);
