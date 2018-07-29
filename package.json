@@ -9,6 +9,10 @@
     "start": "nodemon ./server/index.js",
     "database": "mysql -u root < database/schema.sql -p"
   },
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dev-Stars/image-carousel.git"
