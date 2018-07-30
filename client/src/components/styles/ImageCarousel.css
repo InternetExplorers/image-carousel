@@ -1,0 +1,16 @@
+.imageCarousel {
+  max-width: 660px;
+  position: relative;
+  margin: auto;
+}
+.imageCarouselRow {
+  display: flex;
+  position: relative;
+}
+
+.imageCarouselBg {
+  background-image: url(https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/cityscape.png);
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: 600px 400px;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import ImageRotateButton from './ImageRotateButton.jsx';
+import styles from './styles/ImageModal.css';
 
 class ImageModal extends React.Component {
   constructor(props) {
@@ -39,14 +40,14 @@ class ImageModal extends React.Component {
     const { onCloseRequest } = this.props;
     const { imageList, imageIdx } = this.state;
     const image = imageList[imageIdx];
-    const displayButton = imageList.length < 1;
+    const displayButton = imageList.length <= 1;
     const disablePrevButton = imageIdx === 0;
     const disableNextButton = imageIdx >= imageList.length - 1;
     return (
-      <div className="image-modal-overlay">
-        <div className="image-modal" ref={node => (this.modal = node)}>
-          <div className="image-modal-content">
-            <div className="image-panel">
+      <div className={styles.imageModalOverlay}>
+        <div className={styles.imageModal} ref={node => (this.modal = node)}>
+          <div className={styles.imageModalContent}>
+            <div className={styles.imagePanel}>
               <img src={image.originalUrl} alt={image.title} />
               {!displayButton
                 && (<ImageRotateButton
@@ -65,17 +66,17 @@ class ImageModal extends React.Component {
                 />
                 )}
             </div>
-            <div className="info-panel">
-              <div className="user-info">
-                <div className="user-avatar">
+            <div className={styles.infoPanel}>
+              <div className={styles.userInfo}>
+                <div className={styles.userAvatar}>
                   <img src={image.profileUrl} alt={image.profileName} />
                 </div>
-                <div className="user-info-text">
-                  <div className="user-name">
+                <div className={styles.userInfoText}>
+                  <div className={styles.userName}>
                     {image.profileName}
                   </div>
-                  <div className="user-stat">
-                    <span className="image-modal-icon">
+                  <div className={styles.userStat}>
+                    <span className={styles.imageModalIcon}>
                       <img
                         src="https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/friendIcon.png"
                         alt="friend-icon"
@@ -84,7 +85,7 @@ class ImageModal extends React.Component {
                         {image.profileFriendCount}
                       </span>
                     </span>
-                    <span className="image-modal-icon">
+                    <span className={styles.imageModalIcon}>
                       <img
                         src="https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/reviewIcon.png"
                         alt="review-icon"
@@ -96,10 +97,10 @@ class ImageModal extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="image-modal-description">
+              <div className={styles.imageModalDescription}>
                 {image.description}
               </div>
-              <div className="image-modal-date">
+              <div className={styles.imageModalDate}>
                 {moment(image.date).format('MMMM Do, YYYY')}
               </div>
             </div>

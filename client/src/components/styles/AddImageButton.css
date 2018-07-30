@@ -1,0 +1,17 @@
+.imageCarouselAddImageButton {
+    position: relative;
+    margin: auto;
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid;
+    font-weight: bold;
+    text-align: center;
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+    border-color: #ccc;
+    color: #666;
+    background-color: #f7f7f7;
+    background: linear-gradient(#fff, #f7f7f7);
+    border-radius: 3px;
+}
+  
