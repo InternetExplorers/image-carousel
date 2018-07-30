@@ -5,14 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
-    "build": "webpack -d --watch",
+    "build-dev": "webpack -d --watch",
+    "build": "webpack --config webpack.prod.js",
     "start": "nodemon ./server/index.js",
     "database": "mysql -u root < database/schema.sql -p"
   },
   "jest": {
     "verbose": true,
     "testURL": "http://localhost/",
-    "transform": {".*": "<rootDir>/node_modules/jest-css-modules"}
+    "transform": {
+      ".*": "<rootDir>/node_modules/jest-css-modules"
+    }
   },
   "repository": {
     "type": "git",
@@ -51,6 +54,7 @@
     "jest-css-modules": "^1.1.0",
     "jest-enzyme": "^6.0.2",
     "sinon": "^6.1.4",
-    "style-loader": "^0.21.0"
+    "style-loader": "^0.21.0",
+    "webpack-merge": "^4.1.3"
   }
 }
