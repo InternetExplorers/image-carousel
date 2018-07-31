@@ -21,7 +21,7 @@ class ImageCarousel extends React.Component {
   }
 
   componentDidMount() {
-    fetchImages(10, (err, imageList) => {
+    fetchImages(1, (err, imageList) => {
       if (err) {
         throw (err);
       } else {
