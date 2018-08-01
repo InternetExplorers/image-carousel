@@ -1,4 +1,5 @@
 .imageModalOverlay {
+  font-family: Arial, sans-serif;
   position: fixed;
   top: 0;
   left: 0;
@@ -22,7 +23,7 @@
   position: relative;
   float: left;
   height: 100%;
-  width: 70%;
+  width: 75%;
   background-color: black;
   margin:0px;
 }
@@ -38,11 +39,9 @@
 }
 .infoPanel {
   float: right;
-  width: 30%;
+  width: 25%;
 }
 .userInfo {
-  font-family: Arial, sans-serif;
-  font-weight: bold;
   margin: 13px;
   max-height: 50px;
   display: flex;
@@ -63,6 +62,8 @@
   align-items: center;
 }
 .userName {
+  font-weight: bold;
+  color: #0073bb;
   margin: 5px 0px;
 }
 .imageModalIcon{
@@ -96,4 +97,47 @@
   font-size: 15px;
   font-family: inherit;
   font-family: Verdana, sans-serif;
+}
+
+.imageFooter{
+  position: absolute;
+  padding: 6px 9px 6px 10px;
+  right:0;
+  left:0;
+  bottom: 0;
+  z-index: 2;
+  color: white;
+  background: rgba(0,0,0,0.5);
+}
+.buttonGroup {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  margin-right: 6px;
+  opacity: 0.3;
+}
+.buttonGroup:hover , .flagButton{
+  opacity: 0.8;
+}
+
+.buttonGroup img {
+  margin: auto;
+  padding-right: 2px;
+  max-width: 18px;
+  max-height: 18px;
+}
+
+.browseButton {
+  float: left;
+}
+
+.imageCount {
+  position: absolute;
+  left: 50%;
+  margin-left: -20px;
+  opacity: 0.3;
+}
+
+.mediaControl {
+  float: right;
 }

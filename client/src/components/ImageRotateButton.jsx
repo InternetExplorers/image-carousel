@@ -10,7 +10,7 @@ const ImageRotateButton = ({
   <span
     className={styles.imageCarouselButton
     + (displayButton ? '' : ` ${styles.hide}`)
-    + (disable ? ` ${styles.disbale}` : ` ${styles.enable}`)
+    + (disable ? ` ${styles.disable}` : ` ${styles.enable}`)
     + (direction > 0 ? ` ${styles.next}` : ' image-carousel-prev')}
     onClick={disable ? () => {} : () => { handleRotate(direction); }}
     onKeyUp={() => {}}
