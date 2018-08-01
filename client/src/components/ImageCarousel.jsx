@@ -23,7 +23,7 @@ class ImageCarousel extends React.Component {
   componentDidMount() {
     const url = window.location.pathname;
     const businessId = url.slice(1, url.length - 1);
-    fetchImages(1, (err, imageList) => {
+    fetchImages(businessId, (err, imageList) => {
       if (err) {
         throw (err);
       } else {
