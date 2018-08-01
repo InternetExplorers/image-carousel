@@ -1,5 +1,6 @@
 .imageCarousel {
   max-width: 660px;
+  width: 660px;
   position: relative;
   margin: auto;
 }

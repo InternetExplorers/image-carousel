@@ -10,10 +10,43 @@
   height: 100%;
 }
 
-.imageCarouselImg :hover {
-  transform: scale(1.2);
+.imageCarouselImg > div {
+  margin: auto;
   position: absolute;
+  padding: 6px 9px 6px 7px;
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  right:0;
+  left:0;
+  bottom: 0;
+  line-height: 1.5em;
+  z-index: 2;
+  color: white;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+}
+.leftImg {
+  order: -3;
+}
+.centerImg {
+  order: -2;
+}
+.rightImg {
+  order: -1;
+}
+.imageCarouselImg:hover, .centerImg{
+  transform: scale(1.2);
   z-index: 1;
   transition: 0.3s ease;
 }
-  
+
+.sideImg:hover ~ .centerImg {
+  transform: scale(1);
+  z-index: 0;
+}
+
+.imageCarouselImg:hover > div {
+  opacity: 1;
+  transition: 0.3s ease;
+}
