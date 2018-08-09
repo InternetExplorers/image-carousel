@@ -25,7 +25,6 @@ app.get('/businesses/:businessId/images', (req, res) => {
       res.status(200).send(images);
     }
   });
-
 });
 
 app.post('/businesses/:businessId/images', (req, res) => {
@@ -36,6 +35,34 @@ app.post('/businesses/:businessId/images', (req, res) => {
       res.status(200).send();
     }
   });
+});
+
+app.post('/businesses/:businessId/images', (req, res) => {
+  dbHelper.postImage({ id: req.params.businessId }, (err, data) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      res.status(200).send();
+    }
+  });
+});
+
+app.put('/businesses/:businessId/images/:imageId', (req, res) => {
+  const { businessId, imageId } = req.params;
+  if (err) {
+    res.status(400).send(err);
+  } else {
+    res.status(200).send();
+  }
+});
+
+app.delete('/businesses/:businessId/images', (req, res) => {
+  const { businessId } = req.params;
+  if (err) {
+    res.status(400).send(err);
+  } else {
+    res.status(200).send();
+  }
 });
 
 app.put('/businesses/:businessId/images/:imageId', (req, res) => {
