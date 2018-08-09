@@ -44,11 +44,10 @@ const updateImage = (data, cb) => {
 }
 
 const deleteImage = (data, cb) => {
-
+  
 }
 
-
-export {
+module.exports = {
   getImages,
   postImage,
   updateImage,

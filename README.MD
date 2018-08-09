@@ -16,7 +16,19 @@
 
 ## Usage
 
-> Some usage instructions
+> Some usage instructions:
+
+>GET:
+ `/businesses/:businessId/images`
+
+>POST:
+ `/businesses/:businessId/images`
+
+>PUT:
+ `/businesses/:businessId/images/:imageId`
+
+>DELETE:
+ `/businesses/:businessId/images`
 
 ## Requirements
 
