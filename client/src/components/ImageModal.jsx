@@ -49,6 +49,48 @@ class ImageModal extends React.Component {
           <div className={styles.imageModalContent}>
             <div className={styles.imagePanel}>
               <img src={image.originalUrl} alt={image.title} />
+              <div className={styles.imageFooter}>
+                <div className={`${styles.browseButton} ${styles.buttonGroup}`}>
+                  <img
+                    className={styles.browseIcon}
+                    alt="icon"
+                    src="https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/browseIcon.png"
+                  />
+                  <span>
+                    Browse all
+                  </span>
+                </div>
+                <div className={styles.imageCount}>
+                  {`${imageIdx + 1} of ${imageList.length}`}
+                </div>
+                <div className={styles.mediaControl}>
+                  <span className={`${styles.shareButton} ${styles.buttonGroup}`}>
+                    <img
+                      className={styles.shareIcon}
+                      alt="icon"
+                      src="https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/shareIcon.png"
+                    />
+                    <span>
+                      Share
+                    </span>
+                  </span>
+                  <span className={`${styles.complimentButton} ${styles.buttonGroup}`}>
+                    <img
+                      alt="icon"
+                      src="https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/complimentIcon.png"
+                    />
+                    <span>
+                      Compliment
+                    </span>
+                  </span>
+                  <span className={`${styles.flagButton} ${styles.buttonGroup}`}>
+                    <img
+                      alt="icon"
+                      src="https://s3.us-east-2.amazonaws.com/hrsf98-yelp-project/flagIcon.png"
+                    />
+                  </span>
+                </div>
+              </div>
               {!displayButton
                 && (<ImageRotateButton
                   direction={-1}

@@ -21,7 +21,9 @@ class ImageCarousel extends React.Component {
   }
 
   componentDidMount() {
-    fetchImages(1, (err, imageList) => {
+    const url = window.location.pathname;
+    const businessId = url.slice(1, url.length - 1);
+    fetchImages(businessId, (err, imageList) => {
       if (err) {
         throw (err);
       } else {
@@ -72,9 +74,10 @@ class ImageCarousel extends React.Component {
       rightIdx = centerImageIdx + 1;
       if (rightIdx >= imageList.length - 1) disableNextButton = true;
     }
-    let imageIdxArray = [leftIdx, centerImageIdx, rightIdx];
+    let imageIdxArray = [leftIdx, rightIdx, centerImageIdx];
     const displayAddPhoto = imageList.length < 3;
-    imageIdxArray = imageIdxArray.filter(idx => imageList[idx] !== undefined);
+    imageIdxArray = imageIdxArray.filter(imageIdx => imageList[imageIdx] !== undefined);
+    let imgPos;
     return (
       <div
         className={styles.imageCarousel
@@ -84,13 +87,21 @@ class ImageCarousel extends React.Component {
       >
         <div className={styles.imageCarouselRow}>
           {imageIdxArray.map(
-            (imgIdx) => {
+            (imgIdx, idx) => {
+              if (idx === 0) {
+                imgPos = 0;
+              } else if (idx === 2 || idx === imageIdxArray.length - 1) {
+                imgPos = 1;
+              } else {
+                imgPos = 2;
+              }
               return (
                 <ImageListEntry
                   key={imgIdx}
+                  pos={imgPos}
                   imgIdx={imgIdx}
                   image={imageList[imgIdx]}
-                  centerImageIdx={centerImageIdx}
+                  isCenter={centerImageIdx === imgIdx}
                   handleToggleModal={this.handleToggleModal}
                 />);
             },
@@ -124,5 +135,5 @@ class ImageCarousel extends React.Component {
     );
   }
 }
-
+global.ImageCarousel = ImageCarousel;
 export default ImageCarousel;

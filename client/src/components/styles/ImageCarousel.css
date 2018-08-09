@@ -1,11 +1,13 @@
 .imageCarousel {
   max-width: 660px;
+  width: 660px;
   position: relative;
   margin: auto;
 }
 .imageCarouselRow {
   display: flex;
   position: relative;
+  height: 220px;
 }
 
 .imageCarouselBg {
