@@ -1,5 +1,5 @@
 const fs = require('fs');
-// const faker = require('faker');
+const faker = require('faker');
 
 const adj = [
   'Tasty',
@@ -17,20 +17,23 @@ const adj = [
 const append = (data) => {
   const chunks = [];
   let prevIdx = 0;
-  for (let j = 100000; j < data.length; j += 100000) {
+  for (let j = 0; j <= data.length; j += 10000000) {
     chunks.push(data.slice(prevIdx, j).join('\n'));
     prevIdx = j;
   }
-  for (let i = 1; i <= 100; i += 1) {
-    fs.appendFileSync(`./fakeData/data${i}.csv`, chunks[i]);
-  }
+  // for (let i = 1; i <= 5; i += 1) {
+    const headers = 'index,business\n';
+    fs.appendFileSync(`./fakeBizData/data.csv`, headers + chunks);
+  // }
 };
 
 const makeUniqueBusinesses = (rounds) => {
   const storage = [];
+  let id = 1;
   const makeCombos = (counter, combo = []) => {
     if (!counter) {
-      storage.push(combo);
+      storage.push([id, combo.join(' ')]);
+      id++;
     } else {
       for (let i = 0; i < adj.length; i += 1) {
         const element = adj[i];
