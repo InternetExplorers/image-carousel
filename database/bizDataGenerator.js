@@ -45,4 +45,4 @@ const makeUniqueBusinesses = (rounds) => {
   append(storage);
 };
 
-makeUniqueBusinesses(7);
+// makeUniqueBusinesses(7);

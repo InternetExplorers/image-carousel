@@ -8,7 +8,9 @@
     "build-dev": "webpack -d --watch",
     "build": "webpack --config webpack.prod.js",
     "start": "nodemon ./server/index.js",
-    "database": "mysql -u root < database/schema.sql -p"
+    "database": "mysql -u root < database/schema.sql",
+    "seed": "psql -p5432 -d yelp < database/postgreSQL/schema.sql",
+    "psql": "psql -d yelp"
   },
   "jest": {
     "verbose": true,
