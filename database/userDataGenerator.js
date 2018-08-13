@@ -44,4 +44,4 @@ const createUsers = () => {
   console.log(count);
 }
 
-createUsers();
+// createUsers();
