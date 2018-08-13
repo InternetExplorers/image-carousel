@@ -49,7 +49,7 @@ const createImgs = () => {
       count++
     }
     while (chunkNum < 200000) {
-      let url = images(randomNumber(1, 1000));
+      let url = images(randomNumber(1, 1001));
       let date = randomDate(new Date(2018, 0), new Date(2018, 12));
       let currentId = assignImages(count);
       //idx
