@@ -18,7 +18,7 @@ CREATE TABLE users (
 
 DROP TABLE IF EXISTS images;
 CREATE TABLE images (
-  id integer NOT NULL,
+  id serial NOT NULL,
   userId int NOT NULL,
   businessId int NOT NULL,
   title varchar(75),
