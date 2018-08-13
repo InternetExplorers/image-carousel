@@ -1,4 +1,6 @@
 
+const db = require('../database/index');
+
 const getImages = (data, cb) => {
   const queryString = `SELECT businesses.name,
     users.profileName,
