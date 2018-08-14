@@ -10,7 +10,9 @@
     "start": "nodemon ./server/index.js",
     "database": "mysql -u root < database/schema.sql",
     "seed": "psql -p5432 -d yelp < database/postgreSQL/schema.sql",
-    "psql": "psql -d yelp"
+    "psql": "psql -d yelp",
+    "cass": "cqlsh",
+    "seed-cass": "cqlsh -f 'schema.cql'"
   },
   "jest": {
     "verbose": true,
