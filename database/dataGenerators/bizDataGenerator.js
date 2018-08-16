@@ -21,10 +21,8 @@ const append = (data) => {
     chunks.push(data.slice(prevIdx, j).join('\n'));
     prevIdx = j;
   }
-  // for (let i = 1; i <= 5; i += 1) {
-    const headers = 'index,business\n';
-    fs.appendFileSync(`./fakeBizData/data.csv`, headers + chunks);
-  // }
+  const headers = 'businessName\n';
+  fs.appendFileSync(`./fakeBizData/fakedata.csv`, headers + chunks);
 };
 
 const makeUniqueBusinesses = (rounds) => {
@@ -32,7 +30,7 @@ const makeUniqueBusinesses = (rounds) => {
   let id = 1;
   const makeCombos = (counter, combo = []) => {
     if (!counter) {
-      storage.push([id, combo.join(' ')]);
+      storage.push(combo.join(' '));
       id++;
     } else {
       for (let i = 0; i < adj.length; i += 1) {
@@ -45,4 +43,4 @@ const makeUniqueBusinesses = (rounds) => {
   append(storage);
 };
 
-// makeUniqueBusinesses(7);
+makeUniqueBusinesses(7);

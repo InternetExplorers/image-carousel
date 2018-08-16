@@ -18,7 +18,7 @@ function randomDate(start, end) {
 const images = (num) => `https://s3-us-west-1.amazonaws.com/sdcfoodphotos/Food+Images/PIcture${num}.jpg`;
 
 const createImgs = () => {
-  const headers = 'index,userId,businessId,title,description,url,thumbnail,date\n';
+  const headers = 'userId,businessId,title,description,url,thumbnail,date\n';
   let count = 0;
   let picsPerBiz = 1;
   let numReset = 0;
@@ -52,8 +52,6 @@ const createImgs = () => {
       let url = images(randomNumber(1, 1001));
       let date = randomDate(new Date(2018, 0), new Date(2018, 12));
       let currentId = assignImages(count);
-      //idx
-      storage += `${count},`;
       //user id
       storage += `${currentId},`;
       //bus id

@@ -8,3 +8,4 @@ fakeBizData
 fakeImgData
 fakeUserData
 .DS_Store
+*.csv
