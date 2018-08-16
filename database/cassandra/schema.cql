@@ -49,37 +49,56 @@ USE yelp;
 --   UUID uuid,
 --   PRIMARY KEY (bizname, profilename)
 -- );
+-- drop table yelp.imagesbybusiness;
 
-CREATE TABLE imagesByBusiness (
+-- CREATE TABLE imagesByBusiness (
+--   bizid int,
+--   userid int,
+--   uuid uuid,
+--   imageid int,
+--   date date,
+--   bizname text,
+--   profilename text,
+--   title text,
+--   description text,
+--   url text,
+--   thumbnail text,
+--   PRIMARY KEY (bizid)
+-- );
+
+CREATE TABLE imagesByBiz_User (
   bizid int,
   userid int,
+  uuid uuid,
   imageid int,
   date date,
-  uuid uuid,
   bizname text,
+  profilename text,
   title text,
   description text,
   url text,
-  thumbnail text,
-  profilename text,
-  PRIMARY KEY (( bizid, userid, imageid), date) 
+  PRIMARY KEY (bizid, userid)
 );
-
 
 -- COPY allImages (bizname,profilename,profileurl,reviewcount,friendcount,imageid,userid,bizid,title,description,url,thumbnail,date,UUID)
 -- FROM '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/cassandra/finalDataWithU.csv' with DELIMITER = ',' and header = 'true';
 
--- (name) 
 -- COPY businesses FROM '/Users/michaelchan/Documents/Repos/W8 SDC/image-carousel/database/fakeBizData/data.csv' with DELIMITER = ',' and header = 'true';
 
---(id, profilename, profileurl, reviewcount, friendcount) 
 -- COPY users (id, profilename, profileurl, reviewcount, friendcount) FROM '/Users/michaelchan/Documents/Repos/W8 SDC/image-carousel/database/fakeUserData/UserData.csv' with DELIMITER = ',' and header = 'true';
 
---(title, description, url, thumbnail, date)
 -- COPY images (id, userid, businessid, title, description, url, thumbnail, date) FROM '/Users/michaelchan/Documents/Repos/W8 SDC/image-carousel/database/fakeImgData/fakeImgData.csv' with DELIMITER = ',' and header = 'true';
 
 -- COPY images FROM '/Users/michaelchan/Documents/Repos/W8 SDC/image-carousel/database/cassandra/allData.csv'
 
--- copy yelp.allImages (imageid, bizid, userid, date, uuid, bizname, title, description, url, thumbnail, profilename) to '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/cassandra/imagesbyBiz.csv'
+-- copy yelp.allImages (bizid, userid, uuid, imageid, date, bizname, profilename, title, description, url) to '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/cassandra/imagesbyBiz_UserAll.csv';
 
-copy yelp.imagesByBusiness (imageid, bizid, userid, date, uuid, bizname, title, description, url, thumbnail, profilename) FROM '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/cassandra/imagesbyBiz.csv';
+-- copy yelp.allImages (bizid,userid,uuid,imageid,date,bizname,profilename,title,description,url) TO '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/cassandra/imgBizUser.csv';
+
+copy yelp.imagesbybiz_user (bizid, userid, uuid, imageid, date, bizname, profilename, title, description, url) from '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/cassandra/imgBizUser.csv' WITH PAGETIMEOUT=40 AND PAGESIZE=20 AND CHUNKSIZE=3000;
+
+-- copy yelp.imagesByBiz
+--   (bizid,userid,uuid,imageid,date,bizname,profilename,title,description,url, thumbnail)
+-- FROM '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/cassandra/imagesbyBizAll.csv' WITH PAGETIMEOUT=40 AND PAGESIZE=20 AND CHUNKSIZE=3000;
+
+-- COPY yelp.allImages (bizid, uuid, userid, imageid, date, bizname, profilename, title, description, url, thumbnail) TO '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/cassandra/imagesbyBizAll.csv' WITH HEADER=true AND PAGETIMEOUT=40 AND MAXOUTPUTSIZE=100000 AND DELIMITER='|';
