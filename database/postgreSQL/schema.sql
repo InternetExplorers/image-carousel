@@ -62,23 +62,46 @@ ALTER TABLE images
 
 -- COPY (
 --   select 
+--   images.businessId as bizid,
+--   images.userid as userid,
+--   images.id as imageid,
+--   images.date
 --   businesses.name as bizname,
 --   users.profilename,
 --   users.profileurl,
 --   users.reviewcount,
 --   users.friendcount,
---   images.id as imageid,
---   images.userid as userid,
---   images.businessId as bizid,
 --   images.title,
 --   images.description,
 --   images.url,
 --   images.thumbnail,
---   images.date
 -- FROM images inner join businesses on images.businessid=businesses.id 
--- inner join users on images.userid=users.id) to '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/cassandra/finalData.csv' CSV DELIMITER ',' HEADER;
+-- inner join users on images.userid=users.id) to '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/cassandra/secondFinal.csv' CSV DELIMITER ',' HEADER;
+
+create index useridx on images (userid);
+create index bizidx on images (businessid);
+
+-- UPDATE images
+-- SET title = 'newtitle',
+--     description = 'updated'
+-- WHERE
+--  userid=8000000;
+
+-- select * from images
+--   where userid=9353419 and businessid=9423423;
+
+-- UPDATE images
+-- SET title = 'newtitle',
+--     description = 'updated'
+-- WHERE
+--  userid=5000000 and businessid=5000000;
 
 
--- insert into images (userid, businessid, title, description, url, thumbnail, date) VALUES (50, 50, 'fifty', 'fifty', 'www.google.com', 'www.google.com', '2018-04-04')
+-- UPDATE images
+-- SET title = 'newtitle',
+--     description = 'updated'
+-- WHERE
+--  userid=5000;
 
-UPDATE images SET images.title = 'newtitle', images.description = 'updated' WHERE userid=5;
+-- update images set title='newtitle', description='title' 
+-- where businessid=9053534
