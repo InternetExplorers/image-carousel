@@ -49,7 +49,6 @@ USE yelp;
 --   UUID uuid,
 --   PRIMARY KEY (bizname, profilename)
 -- );
--- drop table yelp.imagesbybusiness;
 
 -- CREATE TABLE imagesByBusiness (
 --   bizid int,
@@ -64,21 +63,21 @@ USE yelp;
 --   url text,
 --   thumbnail text,
 --   PRIMARY KEY (bizid)
--- );
+-- -- );
 
-CREATE TABLE imagesByBiz_User (
-  bizid int,
-  userid int,
-  uuid uuid,
-  imageid int,
-  date date,
-  bizname text,
-  profilename text,
-  title text,
-  description text,
-  url text,
-  PRIMARY KEY (bizid, userid)
-);
+-- CREATE TABLE imagesByBiz_User (
+--   bizid int,
+--   userid int,
+--   uuid uuid,
+--   imageid int,
+--   date date,
+--   bizname text,
+--   profilename text,
+--   title text,
+--   description text,
+--   url text,
+--   PRIMARY KEY (bizid, userid)
+-- );
 
 -- COPY allImages (bizname,profilename,profileurl,reviewcount,friendcount,imageid,userid,bizid,title,description,url,thumbnail,date,UUID)
 -- FROM '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/cassandra/finalDataWithU.csv' with DELIMITER = ',' and header = 'true';
@@ -95,7 +94,7 @@ CREATE TABLE imagesByBiz_User (
 
 -- copy yelp.allImages (bizid,userid,uuid,imageid,date,bizname,profilename,title,description,url) TO '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/cassandra/imgBizUser.csv';
 
-copy yelp.imagesbybiz_user (bizid, userid, uuid, imageid, date, bizname, profilename, title, description, url) from '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/cassandra/imgBizUser.csv' WITH PAGETIMEOUT=40 AND PAGESIZE=20 AND CHUNKSIZE=3000;
+-- copy yelp.imagesbybiz_user (bizid, userid, uuid, imageid, date, bizname, profilename, title, description, url) from '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/cassandra/imgBizUser.csv' WITH PAGETIMEOUT=40 AND PAGESIZE=20 AND CHUNKSIZE=3000;
 
 -- copy yelp.imagesByBiz
 --   (bizid,userid,uuid,imageid,date,bizname,profilename,title,description,url, thumbnail)
