@@ -28,6 +28,7 @@ class ImageCarousel extends React.Component {
         throw (err);
       } else {
         this.setState({ imageList });
+        console.log(this.state.imageList);
       }
     });
   }
