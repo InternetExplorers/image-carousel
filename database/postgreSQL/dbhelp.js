@@ -63,9 +63,9 @@ const updateImage = (data, cb) => {
 };
 
 const deleteImage = (data, cb) => {
-  const { businesssid, imageid, body } = data;
-  const queryStr = ``;
-  const queryParams = [];
+  const { imageid } = data;
+  const queryStr = `DELETE FROM images WHERE id=$1`;
+  const queryParams = [imageid];
 
   db.pool.query(queryStr, queryParams, (err, deleted) => {
     if (err) cb(err);

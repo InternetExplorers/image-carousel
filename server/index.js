@@ -52,8 +52,15 @@ app.put('/businesses/:businessid/images/:imageid', (req, res) => {
   );
 });
 
-app.delete('/businesses/:businessId/images', (req, res) => {
-  const { businessId } = req.params;
+app.delete('/businesses/:businessId/images/:imageid', (req, res) => {
+  const { businessid, imageid } = req.params;
+  dbHelp.deleteImage(
+    { businessid: businessid, imageid: imageid },
+    (err, data) => {
+      if (err) res.json(err);
+      else res.json('DELETED');
+    }
+  );
 });
 
 app.listen(port, () => {
