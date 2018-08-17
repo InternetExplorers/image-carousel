@@ -22,20 +22,25 @@ app.use('/:id/', express.static(path.join(__dirname, '/../client/dist')));
 
 app.get('/businesses/:businessId/images', (req, res) => {
   dbHelp.getImages({ id: req.params.businessId }, (err, images) => {
-    if (err) res.status(400).send(err);
-    else res.status(200).send(images.rows);
+    if (err) res.json(err);
+    else res.json(images.rows);
   });
 });
 
-// app.post('/businesses/:businessId/images', (req, res) => {
-//   dbHelper.postImage({ id: req.params.businessId }, (err, data) => {
-//     if (err) {
-//       res.status(400).send(err);
-//     } else {
-//       res.status(200).send();
-//     }
-//   });
-// });
+app.post('/businesses/:businessId/images', (req, res) => {
+  // console.log(req.body);
+  dbHelp.postImage(
+    { id: req.params.businessId, body: req.body },
+    (err, data) => {
+      // console.log(data);
+      if (err) {
+        res.status(400).send(err);
+      } else {
+        res.send('SENT');
+      }
+    }
+  );
+});
 
 // app.put('/businesses/:businessId/images/:imageId', (req, res) => {
 //   const { businessId, imageId } = req.params;
