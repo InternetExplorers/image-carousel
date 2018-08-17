@@ -28,7 +28,6 @@ app.get('/businesses/:businessId/images', (req, res) => {
 });
 
 app.post('/businesses/:businessId/images', (req, res) => {
-  // console.log(req.body);
   dbHelp.postImage(
     { id: req.params.businessId, body: req.body },
     (err, data) => {
