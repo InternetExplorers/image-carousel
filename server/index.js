@@ -1,9 +1,9 @@
+const newrelic = require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const db = require('../database/postgreSQL/index');
 const dbHelp = require('../database/postgreSQL/dbhelp');
-
 const app = express();
 const port = 3001;
 
@@ -28,7 +28,6 @@ app.get('/businesses/:businessId/images', (req, res) => {
 });
 
 app.post('/businesses/:businessId/images', (req, res) => {
-  // console.log(req.body);
   dbHelp.postImage(
     { id: req.params.businessId, body: req.body },
     (err, data) => {
