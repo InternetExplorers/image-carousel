@@ -32,11 +32,8 @@ app.post('/businesses/:businessId/images', (req, res) => {
   dbHelp.postImage(
     { id: req.params.businessId, body: req.body },
     (err, data) => {
-      if (err) {
-        res.status(400).send(err);
-      } else {
-        res.send('SENT');
-      }
+      if (err) res.status(400).send(err);
+      else res.send('SENT');
     }
   );
 });

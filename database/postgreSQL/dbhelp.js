@@ -16,7 +16,6 @@ const postImage = (data, cb) => {
   INSERT INTO images 
   (userid, businessid, title, description, url, thumbnail, date) 
   VALUES ($1,$2,$3,$4,$5,$6,$7)`;
-  console.log('data', data, 'id', id);
   const queryParams = [
     +body.userid,
     +id,
@@ -26,7 +25,6 @@ const postImage = (data, cb) => {
     body.thumbnail,
     body.date,
   ];
-  console.log(queryParams);
   db.pool.query(queryStr, queryParams, (err, sentImage) => {
     if (err) cb(err);
     else cb(null, sentImage);
@@ -55,7 +53,6 @@ const updateImage = (data, cb) => {
     body.date,
     +imageid,
   ];
-  console.log(body, imageid, businessid);
   db.pool.query(queryStr, queryParams, (err, update) => {
     if (err) cb(err);
     else cb(null, update);
