@@ -1,12 +1,12 @@
 -- DROP TABLE IF EXISTS businesses;
--- CREATE TABLE businesses (
---   id serial,
---   businessname character varying(100),
---   PRIMARY KEY (id)
--- ) ;
+CREATE TABLE IF NOT EXISTS businesses (
+  id serial,
+  businessname character varying(100),
+  PRIMARY KEY (id)
+) ;
 
-DROP TABLE IF EXISTS users;
-CREATE TABLE users (
+-- DROP TABLE IF EXISTS users;
+CREATE TABLE IF NOT EXISTS users (
   id serial,
   profilename character varying(50) NOT NULL,
   profileurl character varying(100),
@@ -15,8 +15,8 @@ CREATE TABLE users (
   PRIMARY KEY (id)
 );
 
-DROP TABLE IF EXISTS images;
-CREATE TABLE images (
+-- DROP TABLE IF EXISTS images;
+CREATE TABLE IF NOT EXISTS images (
   id serial,
   userId int NOT NULL,
   businessId int NOT NULL,
@@ -30,15 +30,15 @@ CREATE TABLE images (
 
 -- COPY businesses (businessname) FROM '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/fakeBizData/data.csv' DELIMITER ',' CSV HEADER;
 
-COPY users (profilename, profileurl, reviewcount, friendcount) FROM '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/fakeUserData/userData.csv' DELIMITER ',' CSV HEADER;
+-- COPY users (profilename, profileurl, reviewcount, friendcount) FROM '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/fakeUserData/userData.csv' DELIMITER ',' CSV HEADER;
 
-COPY images (userid, businessid, title, description, url, thumbnail, date) FROM '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/fakeImgData/fakeImgData.csv' DELIMITER ',' CSV HEADER;
+-- COPY images (userid, businessid, title, description, url, thumbnail, date) FROM '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/fakeImgData/fakeImgData.csv' DELIMITER ',' CSV HEADER;
 
 -- ALTER TABLE to add foreign keys
-ALTER TABLE images 
-  ADD FOREIGN KEY (userId) REFERENCES users(id);
-ALTER TABLE images 
-  ADD FOREIGN KEY (businessId) REFERENCES businesses(id);
+-- ALTER TABLE images 
+--   ADD FOREIGN KEY (userId) REFERENCES users(id);
+-- ALTER TABLE images 
+--   ADD FOREIGN KEY (businessId) REFERENCES businesses(id);
 
 --select (sample_images.id, sample_businesses.name, sample_users.profilename, sample_users.profileurl, sample_users.reviewcount, sample_users.friendcount, sample_images.title, sample_images.description, sample_images.url, sample_images.thumbnail, sample_images.date)
 
@@ -78,8 +78,8 @@ ALTER TABLE images
 -- FROM images inner join businesses on images.businessid=businesses.id 
 -- inner join users on images.userid=users.id) to '/Users/michaelchan/Documents/Repos/8WSDC/image-carousel/database/cassandra/secondFinal.csv' CSV DELIMITER ',' HEADER;
 
-create index useridx on images (userid);
-create index bizidx on images (businessid);
+-- create index useridx on images (userid);
+-- create index bizidx on images (businessid);
 
 -- UPDATE images
 -- SET title = 'newtitle',

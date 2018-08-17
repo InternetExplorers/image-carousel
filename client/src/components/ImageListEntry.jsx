@@ -13,7 +13,7 @@ const ImageListEntry = ({ imgIdx, image, handleToggleModal, pos, isCenter }) => 
     onClick={handleToggleModal}
     onKeyUp={() => {}}
   >
-    <img src={image.thumbnailUrl} alt={image.title} data-img-idx={imgIdx} />
+    <img src={image.url} alt={image.title} data-img-idx={imgIdx} />
     <div>
       {image.title}
     </div>
