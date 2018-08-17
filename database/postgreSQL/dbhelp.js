@@ -2,8 +2,9 @@ const db = require('./index');
 
 const getImages = (data, cb) => {
   const { id } = data;
-  const queryStr = `SELECT * FROM images WHERE businessid=${id}`;
-  db.pool.query(queryStr, (err, images) => {
+  const queryStr = `SELECT * FROM images WHERE businessid=$1`;
+  const params = [+id];
+  db.pool.query(queryStr, params, (err, images) => {
     if (err) cb(err);
     else cb(null, images);
   });
@@ -11,10 +12,13 @@ const getImages = (data, cb) => {
 
 const postImage = (data, cb) => {
   const { id, body } = data;
-  const queryStr = `INSERT INTO images (userid, businessid, title, description, url, thumbnail, date) VALUES (?,?,?,?,?,?,?)`;
-  // console.log('data', data);
+  const queryStr = `
+  INSERT INTO images 
+  (userid, businessid, title, description, url, thumbnail, date) 
+  VALUES ($1,$2,$3,$4,$5,$6,$7)`;
+  console.log('data', data, 'id', id);
   const queryParams = [
-    body.userid,
+    +body.userid,
     +id,
     body.title,
     body.description,
@@ -29,9 +33,49 @@ const postImage = (data, cb) => {
   });
 };
 
+const updateImage = (data, cb) => {
+  const { businessid, imageid, body } = data;
+  const queryStr = `
+  UPDATE images SET 
+    userid=$1,
+    businessid=$2,
+    title=$3, 
+    description=$4, 
+    url=$5, 
+    thumbnail=$6,
+    date=$7
+  WHERE id=$8`;
+  const queryParams = [
+    +body.userid,
+    +businessid,
+    body.title,
+    body.description,
+    body.url,
+    body.thumbnail,
+    body.date,
+    +imageid,
+  ];
+  console.log(body, imageid, businessid);
+  db.pool.query(queryStr, queryParams, (err, update) => {
+    if (err) cb(err);
+    else cb(null, update);
+  });
+};
+
+const deleteImage = (data, cb) => {
+  const { businesssid, imageid, body } = data;
+  const queryStr = ``;
+  const queryParams = [];
+
+  db.pool.query(queryStr, queryParams, (err, deleted) => {
+    if (err) cb(err);
+    else cb(null, deleted);
+  });
+};
+
 module.exports = {
   getImages,
   postImage,
-  // updateImage,
-  // deleteImage,
+  updateImage,
+  deleteImage,
 };

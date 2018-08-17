@@ -32,7 +32,6 @@ app.post('/businesses/:businessId/images', (req, res) => {
   dbHelp.postImage(
     { id: req.params.businessId, body: req.body },
     (err, data) => {
-      // console.log(data);
       if (err) {
         res.status(400).send(err);
       } else {
@@ -42,23 +41,20 @@ app.post('/businesses/:businessId/images', (req, res) => {
   );
 });
 
-// app.put('/businesses/:businessId/images/:imageId', (req, res) => {
-//   const { businessId, imageId } = req.params;
-//   if (err) {
-//     res.status(400).send(err);
-//   } else {
-//     res.status(200).send();
-//   }
-// });
+app.put('/businesses/:businessid/images/:imageid', (req, res) => {
+  const { businessid, imageid } = req.params;
+  dbHelp.updateImage(
+    { businessid: businessid, imageid: imageid, body: req.body },
+    (err, data) => {
+      if (err) res.json(err);
+      else res.json('UPDATED');
+    }
+  );
+});
 
-// app.delete('/businesses/:businessId/images', (req, res) => {
-//   const { businessId } = req.params;
-//   if (err) {
-//     res.status(400).send(err);
-//   } else {
-//     res.status(200).send();
-//   }
-// });
+app.delete('/businesses/:businessId/images', (req, res) => {
+  const { businessId } = req.params;
+});
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
