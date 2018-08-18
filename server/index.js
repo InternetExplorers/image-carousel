@@ -22,7 +22,7 @@ app.use('/:id', express.static(path.join(__dirname, '/../client/dist')));
 app.get('/businesses/:businessId/images', (req, res) => {
   dbHelp.getImages({ id: req.params.businessId }, (err, images) => {
     if (err) res.json(err);
-    else res.json(images.rows);
+    else res.send(images.rows);
   });
 });
 
