@@ -9,5 +9,4 @@ fakeImgData
 fakeUserData
 .DS_Store
 *.csv
-newrelic.js
 newrelic_agent.log
