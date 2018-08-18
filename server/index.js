@@ -1,6 +1,5 @@
 const newrelic = require('newrelic');
 const express = require('express');
-// const bodyParser = require('body-parser');
 const path = require('path');
 const dbHelp = require('../database/postgreSQL/dbhelp');
 const app = express();
