@@ -1,13 +1,12 @@
+const newrelic = require('newrelic');
 const express = require('express');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const path = require('path');
-const db = require('../database/postgreSQL/index');
 const dbHelp = require('../database/postgreSQL/dbhelp');
-
 const app = express();
 const port = 3001;
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -18,7 +17,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/:id/', express.static(path.join(__dirname, '/../client/dist')));
+app.use('/:id', express.static(path.join(__dirname, '/../client/dist')));
 
 app.get('/businesses/:businessId/images', (req, res) => {
   dbHelp.getImages({ id: req.params.businessId }, (err, images) => {
@@ -28,12 +27,11 @@ app.get('/businesses/:businessId/images', (req, res) => {
 });
 
 app.post('/businesses/:businessId/images', (req, res) => {
-  // console.log(req.body);
   dbHelp.postImage(
     { id: req.params.businessId, body: req.body },
     (err, data) => {
-      if (err) res.status(400).send(err);
-      else res.send('SENT');
+      if (err) res.json(err);
+      else res.json('SENT');
     }
   );
 });

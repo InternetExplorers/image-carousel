@@ -1,0 +1,68 @@
+config:
+  target: "http://localhost:3001"
+  phases:
+    - duration: 60
+      arrivalRate: 1
+      rampTo: 10
+      name: "Warm up the application pt 1"
+    - duration: 120
+      arrivalRate: 10
+      rampTo: 100
+      name: "Warm up the application pt 2"
+    - duration: 600
+      arrivalRate: 100
+      rampTo: 1000
+      name: "Warm up the application pt 3"
+    - duration: 4000
+      arrivalRate: 1000
+      name: "Sustained max load"
+  defaults:
+  headers:
+    x-my-service-auth: '987401838271002188298567'
+  payload: 
+    path: "./payload.csv"
+    fields: 
+      - "id"
+      - "businesid"
+      - "imageid"
+    
+scenarios:
+  - name: "Get Images"
+    weight: 80
+    flow:
+      - get:
+          url: "/businesses/{{ id }}/images"
+  - name: "POST"
+    weight: 10
+    flow: 
+      - post:
+          url: "/businesses/{{ id }}/images"
+          json: 
+            userid: "{{ id }}"
+            businessid: "{{ businessid }}"
+            title: "TITLE"
+            description: "DESC"
+            url: "URL"
+            thumbnail: "THUMB"
+            date: "DATE"
+  - name : "DELETE"
+    weight: 5
+    flow:
+      - delete:
+          url: "/businesses/{{ id }}/images/{{ id }}"
+  - name : "DELETE"
+    weight: 5
+    flow:
+      - put:
+          url: "/businesses/{{ id }}/images/{{ id }}"
+          json: 
+            userid: "{{ id }}"
+            businessid: "{{ businessid }}"
+            title: "UPDATE TITLE"
+            description: "UPDATE DESC"
+            url: "UPDATE URL"
+            thumbnail: "UPDATE THUMB"
+            date: "UPDATE DATE"
+          
+
+
