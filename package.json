@@ -7,7 +7,7 @@
     "test": "jest --coverage",
     "build-dev": "webpack -d --watch",
     "build": "webpack --config webpack.prod.js",
-    "start": "nodemon ./server/index.js",
+    "start": "NODE_ENV=production nodemon ./server/index.js",
     "database": "mysql -u root < database/schema.sql",
     "seed": "psql -p5432 -d yelp < database/postgreSQL/schema.sql",
     "psql": "psql -d yelp",
