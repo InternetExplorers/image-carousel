@@ -2,6 +2,7 @@ const newrelic = require('newrelic');
 const path = require('path');
 const cluster = require('cluster');
 const express = require('express');
+const redis = require('redis');
 const dbHelp = require('../database/postgreSQL/dbhelp');
 
 if (cluster.isMaster) {
@@ -26,6 +27,11 @@ if (cluster.isMaster) {
 
   app.use(express.json());
 
+  const client = redis.createClient();
+  // client.on('error', err => {
+  //   console.log('Error', err);
+  // });
+
   app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header(
@@ -38,9 +44,25 @@ if (cluster.isMaster) {
   app.use('/:id', express.static(path.join(__dirname, '/../client/dist')));
 
   app.get('/businesses/:businessId/images', (req, res) => {
-    dbHelp.getImages({ id: req.params.businessId }, (err, images) => {
-      if (err) res.json(err);
-      else res.json(images.rows);
+    client.get(+req.params.businessId, (err, result) => {
+      // if (err) res.send(err);
+      if (result) {
+        console.log(result);
+        res.send(result);
+      } else {
+        dbHelp.getImages({ id: req.params.businessId }, (err, images) => {
+          if (err) {
+            res.json(err);
+          } else {
+            client.setex(
+              +req.params.businessId,
+              3600,
+              JSON.stringify(images.rows)
+            );
+            res.json(images.rows);
+          }
+        });
+      }
     });
   });
 
