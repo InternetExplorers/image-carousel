@@ -45,7 +45,9 @@ if (cluster.isMaster) {
 
   app.get('/businesses/:businessId/images', (req, res) => {
     client.get(+req.params.businessId, (err, result) => {
+      // if (err) res.send(err);
       if (result) {
+        console.log(result);
         res.send(result);
       } else {
         dbHelp.getImages({ id: req.params.businessId }, (err, images) => {
