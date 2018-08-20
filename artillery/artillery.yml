@@ -53,7 +53,7 @@ scenarios:
     flow:
       - delete:
           url: "/businesses/{{ id }}/images/{{ id }}"
-  - name : "DELETE"
+  - name : "PUT"
     weight: 5
     flow:
       - put:
