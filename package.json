@@ -12,7 +12,8 @@
     "seed": "psql -p5432 -d yelp < database/postgreSQL/schema.sql",
     "psql": "psql -d yelp",
     "cass": "cqlsh",
-    "seed-cass": "cqlsh -f 'schema.cql'"
+    "seed-cass": "cqlsh -f 'schema.cql'",
+    "artillery": "artillery run artillery/artillery.yml "
   },
   "jest": {
     "verbose": true,
@@ -48,6 +49,7 @@
     "pg": "^7.4.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "redis": "^2.8.0",
     "request": "^2.87.0",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0"
