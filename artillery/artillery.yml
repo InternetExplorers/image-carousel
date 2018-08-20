@@ -2,20 +2,23 @@ config:
   target: "http://localhost:3001"
   phases:
     - duration: 60
-      arrivalRate: 1
-      rampTo: 10
-      name: "Warm up the application pt 1"
-    - duration: 120
-      arrivalRate: 10
-      rampTo: 100
-      name: "Warm up the application pt 2"
-    - duration: 600
-      arrivalRate: 100
-      rampTo: 1000
-      name: "Warm up the application pt 3"
-    - duration: 4000
-      arrivalRate: 1000
-      name: "Sustained max load"
+    #   arrivalRate: 1
+    #   rampTo: 10
+    #   name: "Warm up the application pt 1"
+    # - duration: 20
+    #   arrivalRate: 10
+    #   rampTo: 100
+    #   name: "Warm up the application pt 2"
+    # - duration: 30
+    #   arrivalRate: 100
+    #   rampTo: 1000
+    #   name: "Warm up the application pt 3"
+    # - duration: 60
+    #   arrivalRate: 400
+    #   rampTo: 5000
+    #   name: "Sustained max load"
+    # - duration: 100
+      arrivalRate: 4000
   defaults:
   headers:
     x-my-service-auth: '987401838271002188298567'
