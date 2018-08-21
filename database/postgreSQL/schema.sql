@@ -1,7 +1,7 @@
 -- DROP TABLE IF EXISTS businesses;
 CREATE TABLE IF NOT EXISTS businesses (
   id serial,
-  businessname character varying(100),
+  businessName character varying(100),
   PRIMARY KEY (id)
 ) ;
 
