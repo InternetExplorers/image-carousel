@@ -3,12 +3,12 @@ import $ from 'jquery';
 module.exports = {
   fetchImages: (businessId, callback) => {
     $.ajax({
-      url: `http://localhost:3001/businesses/${businessId}/images`,
+      url: `http://ec2-54-153-124-199.us-west-1.compute.amazonaws.com/businesses/${businessId}/images`,
       method: 'GET',
-      success: (imageList) => {
+      success: imageList => {
         callback(null, imageList);
       },
-      error: (err) => {
+      error: err => {
         callback(err);
       },
     });
