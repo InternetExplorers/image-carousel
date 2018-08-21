@@ -1,3 +1,7 @@
 node_modules
 npm-debug.log
 database/fakeData
+npm-debug.log
+newrelic_agent.log
+data
+json
